@@ -15,6 +15,7 @@
     <script type="text/javascript" src="https://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
     <title>Document</title>
     <link rel="stylesheet" href="./css/main_demo.css">
+    <script src="./js/main_demo.js"></script>
 </head>
 
 <body>
@@ -39,7 +40,7 @@
 
         <div id="toolbar1">
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true"
-                onclick="newUser()">New
+                onclick="new_Center()">New
                 User</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
                 onclick="editUser()">Edit User</a>
@@ -88,7 +89,7 @@
             <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveUser()"
                 style="width:90px">Save</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
-                onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
+                onclick="javascript:$('#dlg_1').dialog('close')" style="width:90px">Cancel</a>
         </div>
     </div>
 </body>
