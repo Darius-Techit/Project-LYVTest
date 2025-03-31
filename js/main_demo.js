@@ -59,6 +59,7 @@ function save_Center() {
                     title: "Info",
                     msg: result.Info,
                 });
+                $("#dlg_1").dialog("close");
                 $("#dg_1").datagrid("reload");
             } else {
                 $("#dlg_1").dialog("close");
@@ -66,5 +67,29 @@ function save_Center() {
             }
         },
     });
-
+};
+function del_Center() {
+    var row = $("#dg_1").datagrid("getSelected");
+    if (row) {
+        $.messager.confirm(
+            "Confirm",
+            "Bạn có muốn xóa dòng này không?",
+            function (r) {
+                if (r) {
+                    $.post(
+                        "data/data_main_demo/data_main_demo.php?Action=deleteCenter&ID=" + row
+                            .ID + "$Image=" + row.Image,
+                        function (result) {
+                            $("#dg_1").datagrid("reload");
+                            $.messager.show({
+                                title: "Info",
+                                msg: result.Info,
+                            });
+                        },
+                        "Json"
+                    );
+                };
+            }
+        );
+    };
 };
