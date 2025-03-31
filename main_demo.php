@@ -50,33 +50,18 @@
             fitcolunm='true' singleSelect="true">
             <thead>
                 <tr>
-                    <th field="ID" width="65" hidden="true" rowspan="2">ID</th>
-                    <th field="Date" align="center" width="100" rowspan="2">Ngày<br />Date</th>
-                    <th field="Time" align="center" width="100" rowspan="2">Thời gian<br />Time</th>
-                    <th field="Lean" align="center" width="100" rowspan="2">Bộ phận<br />Lean</th>
-                    <th field="RY" align="center" width="100" rowspan="2">Mã số đơn hàng <br />RY</th>
-                    <th field="Article" align="center" width="100" rowspan="2">Tên hình thể <br /> Article</th>
-                    <th field="Pairs" align="center" width="100" rowspan="2">Số đôi<br />Pairs</th>
-                    <th field="Issue" align="center" rowspan="2">Vấn đề phát sinh<br />Issue</th>
-                    <th field="Image" align="center" rowspan="2">Mẫu kim
-                        loại<br />Speciments of metal</th>
-                    <th colspan="4" align="center">Ký tên / Signature</th>
-                </tr>
-                <tr>
-                    <th field="CFM_QC" width="200" align="center">Kiểm phẩm<br />QC</th>
-                    <th field="CFM_Leader" width="200" align="center">Cán bộ QC<br />QC Leader</th>
-                    <th field="CFM_QIP_Supervisor" width="200" align="center">Cán bộ hiện trường<br />Production
-                        Supervisor</th>
-                    <th field="CFM_Production_Supervisor" width="200" align="center">Chủ quản hiện
-                        trường<br />Production
-                        Foreign Supervisor</th>
+                    <th field="ArticleNo" width="85">Article No</th>
+                    <th field="ArticleName" width="200">Article Name</th>
+                    <th field="Category" width="50">Category</th>
+                    <th field="Stage" width="50">Stage</th>
+                    <th field="email" width="255">Inssus & Comments</th>
                 </tr>
             </thead>
         </table>
-
+        <!-- form insert center -->
         <div id="dlg_1" class="easyui-dialog" style="width:730px;top: 50px"
             data-options="closed:true,modal:true,border:'thin',buttons:'#dlg_1-buttons'">
-            <form id="fm_1" method="post" novalidate style="margin:0;padding:20px 50px">
+            <form id="fm_1" method="post" novalidate style="margin:0;padding:10px 20px">
                 <h3>User Information</h3>
                 <div style="margin-bottom:10px">
                     <input name="firstname" class="easyui-textbox" required="true" label="First Name:"
@@ -92,9 +77,14 @@
                     <input name="email" class="easyui-textbox" required="true" validType="email" label="Email:"
                         style="width:100%">
                 </div>
+                <div>
+                    <div>
+
+                    </div>
+                </div>
             </form>
         </div>
-        <div id="dlg-buttons">
+        <div id="dlg_1-buttons">
             <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveUser()"
                 style="width:90px">Save</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
