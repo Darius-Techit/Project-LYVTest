@@ -46,7 +46,6 @@
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true"
                 onclick="destroyUser()">Remove User</a>
         </div>
-        <h1>abd</h1>
         <table id="dg_1" class="easyui-datagrid" style="width:100%; height:450px" toolbar="#toolbar1" rownumbers="true"
             fitcolunm='true' singleSelect="true">
             <thead>
