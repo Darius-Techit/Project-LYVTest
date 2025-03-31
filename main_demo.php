@@ -37,7 +37,6 @@
         </select>
     </div>
     <div class="easyui-layout" style="width:99%;height:510px">
-
         <div id="toolbar1">
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true"
                 onclick="add_Center()">New</a>
@@ -62,7 +61,6 @@
         <div id="dlg_1" class="easyui-dialog" style="width:730px;top: 50px"
             data-options="closed:true,modal:true,border:'thin',buttons:'#dlg_1-buttons'">
             <form id="fm_1" method="post" novalidate style="margin:0;padding:10px 20px">
-                <h3>User Information</h3>
                 <div style="margin-bottom:10px">
                     <input name="firstname" class="easyui-textbox" required="true" label="First Name:"
                         style="width:100%">
