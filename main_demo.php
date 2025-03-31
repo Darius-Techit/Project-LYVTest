@@ -40,22 +40,21 @@
 
         <div id="toolbar1">
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true"
-                onclick="add_Center()">New
-                User</a>
+                onclick="add_Center()">New</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
-                onclick="editUser()">Edit User</a>
+                onclick="editUser()">Edit</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true"
-                onclick="destroyUser()">Remove User</a>
+                onclick="destroyUser()">Remove</a>
         </div>
         <table id="dg_1" class="easyui-datagrid" style="width:100%; height:450px" toolbar="#toolbar1" rownumbers="true"
             fitcolunm='true' singleSelect="true">
             <thead>
                 <tr>
-                    <th field="ArticleNo" width="85">Article No</th>
-                    <th field="ArticleName" width="200">Article Name</th>
-                    <th field="Category" width="50">Category</th>
-                    <th field="Stage" width="50">Stage</th>
-                    <th field="email" width="255">Inssus & Comments</th>
+                    <th field="ArticleNo" width="85" align="center">Article No</th>
+                    <th field="ArticleName" width="200" align="center">Article Name</th>
+                    <th field="Category" width="80" align="center">Category</th>
+                    <th field="Stage" width="50" align="center">Stage</th>
+                    <th field="Comment" width="255" align="center">Inssus & Comments</th>
                 </tr>
             </thead>
         </table>
