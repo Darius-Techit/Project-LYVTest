@@ -40,7 +40,7 @@
 
         <div id="toolbar1">
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true"
-                onclick="new_Center()">New
+                onclick="add_Center()">New
                 User</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
                 onclick="editUser()">Edit User</a>
@@ -86,7 +86,7 @@
             </form>
         </div>
         <div id="dlg_1-buttons">
-            <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveUser()"
+            <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="save_Center()"
                 style="width:90px">Save</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
                 onclick="javascript:$('#dlg_1').dialog('close')" style="width:90px">Cancel</a>
