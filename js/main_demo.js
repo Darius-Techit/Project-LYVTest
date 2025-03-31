@@ -1,3 +1,43 @@
+
+$(document).ready(function () {
+    // $("#ArtNo").textbox('textbox').bind('keyup', function (e) {
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "data/data_main_demo/data_main_demo.php?Action=getArtName",
+    //         data: {
+    //             ArtNo: e.target.value
+    //         },
+    //         success: function (response) {
+    //             $("#ArtName").textbox('setValue', response);
+    //         }
+    //     });
+    // });
+    $("#ArtNo1").textbox('textbox').bind('keyup', function (e) {
+        console.log(e.target.value)
+
+        $.ajax({
+            type: 'POST',
+            url: 'data/data_main_demo/data_main_demo.php?Action=getArtName',
+            data: {
+                ArtNo: e.target.value
+            },
+            success: function (res) {
+                console.log(res)
+            }
+        })
+        // $.ajax({
+        //     type: "POST",
+        //     url: "data/data_main_demo/data_main_demo.php?Action=getArtName",
+        //     data: {
+        //         ArtNo: e.target.value
+        //     },
+        //     success: function (response) {
+        //         $("#ArtName1").textbox('setValue', response);
+        //     }
+        // });
+    });
+})
+
 var url;
 function add_Center() {
     $("#dlg_1").dialog("open").dialog("setTitle", "Thêm mới");

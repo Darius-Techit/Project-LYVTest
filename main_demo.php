@@ -15,7 +15,7 @@
     <script type="text/javascript" src="https://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
     <title>Document</title>
     <link rel="stylesheet" href="./css/main_demo.css">
-    <script src="./js/main_demo.js"></script>
+    <script src="js/main_demo.js"></script>
 </head>
 
 <body>
@@ -58,22 +58,16 @@
             </thead>
         </table>
         <!-- form insert center -->
-        <div id="dlg_1" class="easyui-dialog" style="width:730px;top: 50px"
+        <div id="dlg_1" class="easyui-dialog" style="width:600px;top: 200px"
             data-options="closed:true,modal:true,border:'thin',buttons:'#dlg_1-buttons'">
             <form id="fm_1" method="post" novalidate style="margin:0;padding:10px 20px">
                 <div style="margin-bottom:10px">
-                    <input name="firstname" class="easyui-textbox" required="true" label="First Name:"
-                        style="width:100%">
-                </div>
-                <div style="margin-bottom:10px">
-                    <input name="lastname" class="easyui-textbox" required="true" label="Last Name:" style="width:100%">
-                </div>
-                <div style="margin-bottom:10px">
-                    <input name="phone" class="easyui-textbox" required="true" label="Phone:" style="width:100%">
-                </div>
-                <div style="margin-bottom:10px">
-                    <input name="email" class="easyui-textbox" required="true" validType="email" label="Email:"
-                        style="width:100%">
+                    <input name="ArtNo" id="ArtNo1" class="easyui-textbox" style="width: 200px" label="Article No"
+                        labelWidth="100px" required="true">
+                    <span style="margin-left:10px">
+                        <input name="ArtName" id="ArtName1" class="easyui-textbox" style="width:310px"
+                            label="Article Name" labelWidth="100px" required="true">
+                    </span>
                 </div>
                 <div>
                     <div>
