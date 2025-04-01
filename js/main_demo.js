@@ -9,6 +9,16 @@ $(document).ready(function () {
             }
         }
     });
+    $("#Pic1").combobox({
+        onChange: function (newValue) {
+            if (newValue == '1') {
+                $("#container-img").css('display', 'block');
+            }
+            if (newValue == '0' || newValue == '') {
+                $('#container-img').css('display', 'none');
+            }
+        }
+    });
 
     $("#ArtNo").textbox('textbox').bind('keyup', function (e) {
         $.ajax({
@@ -34,7 +44,26 @@ $(document).ready(function () {
     //         }
     //     })
     // });
-
+    $('.upload-label').change(function (e) {
+        var index = $(this).index('.upload-label');
+        var file = e.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function (event) {
+            $($(".display-img")[index]).attr('src', event.target.result);
+            $($(".image")[index]).val(event.target.result);
+        };
+        reader.readAsDataURL(file);
+    });
+    $('.upload-label_1').change(function (e) {
+        var index = $(this).index('.upload-label_1');
+        var file = e.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function (event) {
+            $($(".display-img_1")[index]).attr('src', event.target.result);
+            $($(".image_1")[index]).val(event.target.result);
+        };
+        reader.readAsDataURL(file);
+    });
 
 })
 
@@ -92,4 +121,10 @@ function del_Center() {
             }
         );
     };
+};
+function do_Search() {
+    $("#dg_1").datagrid({
+        url: "data/data_main_demo/data_main_demo.php?Action=showCenter&ArtNo=" +
+            $("#ArtNo_Search").val(),
+    });
 };

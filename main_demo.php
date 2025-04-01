@@ -7,6 +7,8 @@ include($_SERVER['DOCUMENT_ROOT'] . 'connect.php');
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/icon.css">
     <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/color.css">
@@ -28,10 +30,14 @@ include($_SERVER['DOCUMENT_ROOT'] . 'connect.php');
         </tr>
     </table>
     <div class="search">
-        <select name="Cat" id="Cat1" class="easyui-combobox" style="width:200px" labelWidth="50px" label="Category:"
-            editable="false"
-            data-options="valueField: 'Category',textField: 'Category',url: 'data/data_main_demo/data_main_demo.php?Action=getCategory'">>
-        </select>
+        <!-- <select name="Cat" id="Cat_Search" class="easyui-combobox" style="width:250px" labelWidth="100px" label="Category:"
+            editable="false">
+           
+        </select> -->
+         <b>Article:</b>
+        <input name="ArtNo_Search" id="ArtNo_Search" style="width: 150px" class="easyui-textbox" />
+        <a href="#" style="color:#2272FF" class="easyui-linkbutton" data-options="iconCls:'icon-search'"
+            onClick="do_Search()">Search</a>
     </div>
     <div class="easyui-layout" style="width:99%;height:510px">
         <div id="toolbar1">
@@ -46,11 +52,15 @@ include($_SERVER['DOCUMENT_ROOT'] . 'connect.php');
             fitcolunm='true' singleSelect="true">
             <thead>
                 <tr>
-                    <th field="ArticleNo" width="85" align="center">Article No</th>
-                    <th field="ArticleName" width="200" align="center">Article Name</th>
-                    <th field="Category" width="80" align="center">Category</th>
-                    <th field="Stage" width="50" align="center">Stage</th>
-                    <th field="Comment" width="255" align="center">Inssus & Comments</th>
+                    <th field="ArtNo" width="85" align="center">Article No</th>
+                    <th field="ArtName" width="200" align="center">Article Name</th>
+                    <th field="Cat" width="100" align="center">Category</th>
+                    <th field="Stage" width="70" align="center">Stage</th>
+                    <th field="IssuseComment" width="500" align="center">Inssus & Comments</th>
+                    <th field="Pic" width="200" align="center">Picture</th>
+                    <th field="ResDept" width="150" align="center">Responsibilty Dept</th>
+                    <th field="UserID" width="85" align="center">User ID</th>
+                    <th field="UserDate" width="200" align="center">User Date</th>
                 </tr>
             </thead>
         </table>
@@ -98,6 +108,18 @@ include($_SERVER['DOCUMENT_ROOT'] . 'connect.php');
                         <div class="Img">
                             <div style="width: 300px; height: 200px; display: block; margin: 10px auto;">
                                 <img class="display-img" width="100%" height="100%" src="img/no-image.png" />
+                            </div>
+                            <div style="display: flex; justify-content: center;">
+                                <span>
+                                    <label for="upload1" class="upload-label">
+                                        <span class="glyphicon glyphicon-picture"
+                                            style="font-size: 2.5rem; cursor: pointer; margin-right: 10px;">
+                                        </span>
+                                        <input type="file" class="uploads" id="upload1" style="display: none" />
+
+                                        <input type="hidden" class="image" name="displayImg[]" />
+                                    </label>
+                                </span>
                             </div>
                         </div>
                     </div>
