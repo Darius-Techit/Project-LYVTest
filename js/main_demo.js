@@ -1,6 +1,16 @@
-
 $(document).ready(function () {
-    $("#ArtNo1").textbox('textbox').bind('keyup', function (e) {
+    $("#Pic").combobox({
+        onChange: function (newValue) {
+            if (newValue == '1') {
+                $("#container-img").css('display', 'block');
+            }
+            if (newValue == '0' || newValue == '') {
+                $('#container-img').css('display', 'none');
+            }
+        }
+    });
+
+    $("#ArtNo").textbox('textbox').bind('keyup', function (e) {
         $.ajax({
             type: 'POST',
             url: 'data/data_main_demo/data_main_demo.php?Action=getArtName',
@@ -8,10 +18,24 @@ $(document).ready(function () {
                 ArtNo: e.target.value
             },
             success: function (res) {
-                $("#ArtName1").textbox('setValue', res);
+                $("#ArtName").textbox('setValue', res);
             }
         })
     });
+    // $("#ArtNo1").textbox('textbox').bind('keyup', function (e) {
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: 'data/data_main_demo/data_main_demo.php?Action=getArtName',
+    //         data: {
+    //             ArtNo: e.target.value
+    //         },
+    //         success: function (res) {
+    //             $("#ArtName1").textbox('setValue', res);
+    //         }
+    //     })
+    // });
+
+
 })
 
 var url;

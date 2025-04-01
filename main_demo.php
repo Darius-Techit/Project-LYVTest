@@ -28,12 +28,9 @@ include($_SERVER['DOCUMENT_ROOT'] . 'connect.php');
         </tr>
     </table>
     <div class="search">
-        <select name="Lean" id="Lean" class="easyui-combobox" style="width:200px" labelWidth="50px" label="Stage:"
-            editable="false">
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+        <select name="Cat" id="Cat1" class="easyui-combobox" style="width:200px" labelWidth="50px" label="Category:"
+            editable="false"
+            data-options="valueField: 'Category',textField: 'Category',url: 'data/data_main_demo/data_main_demo.php?Action=getCategory'">>
         </select>
     </div>
     <div class="easyui-layout" style="width:99%;height:510px">
@@ -62,32 +59,33 @@ include($_SERVER['DOCUMENT_ROOT'] . 'connect.php');
             data-options="closed:true,modal:true,border:'thin',buttons:'#dlg_1-buttons'">
             <form id="fm_1" method="post" novalidate style="margin:0;padding:10px 20px">
                 <div style="margin-bottom:10px">
-                    <input name="ArtNo" id="ArtNo1" class="easyui-textbox" style="width: 300px" label="Article No"
+                    <input name="ArtNo" id="ArtNo" class="easyui-textbox" style="width: 300px" label="Article No"
                         labelWidth="100px" required="true">
                     <span style="margin-left:10px">
-                        <input name="ArtName" id="ArtName1" class="easyui-textbox" style="width:300px"
+                        <input name="ArtName" id="ArtName" class="easyui-textbox" style="width:300px"
                             label="Article Name" labelWidth="100px" required="true">
                     </span>
                 </div>
                 <div style="margin-bottom:10px">
-                    <input name="Cat" id="Cat1" class="easyui-combobox" style="width: 300px" label="Catergory"
+                    <select name="Cat" id="Cat1" class="easyui-combobox" style="width: 300px" label="Catergory"
                         labelWidth="100px" required="true"
-                        data-options="valueField: 'alias',textField: 'alias',url: 'data/data_metal_recording/data_MetalRecording.php?Action=getLine'">
+                        data-options="valueField: 'Category',textField: 'Category',url: 'data/data_main_demo/data_main_demo.php?Action=getCategory'">
+                    </select>
                     <span style="margin-left:10px">
-                        <input name="Stage" id="Stage1" class="easyui-textbox" style="width:300px" label="Stage"
+                        <input name="Stage" id="Stage" class="easyui-textbox" style="width:300px" label="Stage"
                             labelWidth="100px" required="true">
                     </span>
                 </div>
                 <div style="margin-bottom:10px">
                     <span style="margin-right:10px">
-                        <select name="Pic" id="Pic1" class="easyui-combobox" panelHeight="auto" style="width:300px"
+                        <select name="Pic" id="Pic" class="easyui-combobox" panelHeight="auto" style="width:300px"
                             label="Picture" labelWidth="100px" required="true">
                             <option value=''></option>
                             <option value='1'>Yes</option>
                             <option value='0'>No</option>
                         </select>
                     </span>
-                    <input name="ResDept" id="ResDept1" class="easyui-textbox" style="width: 300px" label="FD"
+                    <input name="ResDept" id="ResDept" class="easyui-textbox" style="width: 300px" label="FD"
                         labelWidth="100px" required="true">
                 </div>
                 <div style="margin-bottom:10px">
@@ -95,9 +93,13 @@ include($_SERVER['DOCUMENT_ROOT'] . 'connect.php');
                         multiline="true" style="width:620px;height:120px" label="Issuse And Comment" labelWidth="200px">
 
                 </div>
-                <div>
-                    <div>
-
+                <div id="container-img" style="display: none; overflow-x: scroll;overflow-y: hidden;">
+                    <div style="display: flex;margin-bottom: 20px;gap: 40px;">
+                        <div class="Img">
+                            <div style="width: 300px; height: 200px; display: block; margin: 10px auto;">
+                                <img class="display-img" width="100%" height="100%" src="img/no-image.png" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
