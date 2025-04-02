@@ -9,16 +9,16 @@ $(document).ready(function () {
             }
         }
     });
-    $("#Pic1").combobox({
-        onChange: function (newValue) {
-            if (newValue == '1') {
-                $("#container-img").css('display', 'block');
-            }
-            if (newValue == '0' || newValue == '') {
-                $('#container-img').css('display', 'none');
-            }
-        }
-    });
+    // $("#Pic1").combobox({
+    //     onChange: function (newValue) {
+    //         if (newValue == '1') {
+    //             $("#container-img").css('display', 'block');
+    //         }
+    //         if (newValue == '0' || newValue == '') {
+    //             $('#container-img').css('display', 'none');
+    //         }
+    //     }
+    // });
 
     $("#ArtNo").textbox('textbox').bind('keyup', function (e) {
         $.ajax({
@@ -54,16 +54,25 @@ $(document).ready(function () {
         };
         reader.readAsDataURL(file);
     });
-    $('.upload-label_1').change(function (e) {
-        var index = $(this).index('.upload-label_1');
-        var file = e.target.files[0];
-        var reader = new FileReader();
-        reader.onload = function (event) {
-            $($(".display-img_1")[index]).attr('src', event.target.result);
-            $($(".image_1")[index]).val(event.target.result);
-        };
-        reader.readAsDataURL(file);
-    });
+    // $('.upload-label_1').change(function (e) {
+    //     var index = $(this).index('.upload-label_1');
+    //     var file = e.target.files[0];
+    //     var reader = new FileReader();
+    //     reader.onload = function (event) {
+    //         $($(".display-img_1")[index]).attr('src', event.target.result);
+    //         $($(".image_1")[index]).val(event.target.result);
+    //     };
+    //     reader.readAsDataURL(file);
+    // });
+
+    // $("#dg_1").datagrid({
+    //     onDblclickCell: function (index, filed, value) {
+    //         var row = $('#dg_1').datagrid("getSelected");
+    //         if (row.Image) {
+
+    //         }
+    //     },
+    // });
 
 })
 
@@ -106,8 +115,8 @@ function del_Center() {
             function (r) {
                 if (r) {
                     $.post(
-                        "data/data_main_demo/data_main_demo.php?Action=deleteCenter&ID=" + row
-                            .ID + "$Image=" + row.Image,
+                        "data/data_main_demo/data_main_demo.php?Action=deleteCenter&ArtNo="
+                        + row.ArtNo + "&Image=" + row.Image,
                         function (result) {
                             $("#dg_1").datagrid("reload");
                             $.messager.show({
@@ -125,6 +134,25 @@ function del_Center() {
 function do_Search() {
     $("#dg_1").datagrid({
         url: "data/data_main_demo/data_main_demo.php?Action=showCenter&ArtNo=" +
-            $("#ArtNo_Search").val(),
+            $("#ArtNo_Search").val()
     });
 };
+
+function formatLink(val) {
+    let array = val.split(",");
+    let imagesArray = [];
+    for (var i = 0; i <= array.length - 1; i++) {
+        if (val) {
+            imagesArray.push(
+                "<img width='90px' height='50px' src='./data/data_main_demo/img/" +
+                array[i] +
+                "'>"
+            )
+        }
+    }
+    if (val) {
+        return imagesArray.join(" ");
+    } else {
+        return "No";
+    }
+}

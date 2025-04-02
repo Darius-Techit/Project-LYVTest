@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . 'connect.php'); 
+include($_SERVER['DOCUMENT_ROOT'] . 'connect.php');
 //include(__DIR__ . '/connect.php');   
 ?>
 <!DOCTYPE html>
@@ -34,7 +34,7 @@ include($_SERVER['DOCUMENT_ROOT'] . 'connect.php');
             editable="false">
            
         </select> -->
-         <b>Article:</b>
+        <b>Article:</b>
         <input name="ArtNo_Search" id="ArtNo_Search" style="width: 150px" class="easyui-textbox" />
         <a href="#" style="color:#2272FF" class="easyui-linkbutton" data-options="iconCls:'icon-search'"
             onClick="do_Search()">Search</a>
@@ -46,7 +46,7 @@ include($_SERVER['DOCUMENT_ROOT'] . 'connect.php');
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
                 onclick="editUser()">Edit</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true"
-                onclick="destroyUser()">Remove</a>
+                onclick="del_Center()">Remove</a>
         </div>
         <table id="dg_1" class="easyui-datagrid" style="width:100%; height:450px" toolbar="#toolbar1" rownumbers="true"
             fitcolunm='true' singleSelect="true">
@@ -57,8 +57,8 @@ include($_SERVER['DOCUMENT_ROOT'] . 'connect.php');
                     <th field="Cat" width="100" align="center">Category</th>
                     <th field="Stage" width="70" align="center">Stage</th>
                     <th field="IssuseComment" width="500" align="center">Inssus & Comments</th>
-                    <th field="Pic" width="200" align="center">Picture</th>
                     <th field="ResDept" width="150" align="center">Responsibilty Dept</th>
+                    <th field="Image" width="200" align="center">Picture</th>
                     <th field="UserID" width="85" align="center">User ID</th>
                     <th field="UserDate" width="200" align="center">User Date</th>
                 </tr>
@@ -66,7 +66,7 @@ include($_SERVER['DOCUMENT_ROOT'] . 'connect.php');
         </table>
         <!-- form insert center -->
         <div id="dlg_1" class="easyui-dialog" style="width:700px;top: 200px"
-            data-options="closed:true,modal:true,border:'thin',buttons:'#dlg_1-buttons'">
+            data-options="closed:true,modal:true,border:' thin',buttons:'#dlg_1-buttons'">
             <form id="fm_1" method="post" novalidate style="margin:0;padding:10px 20px">
                 <div style="margin-bottom:10px">
                     <input name="ArtNo" id="ArtNo" class="easyui-textbox" style="width: 300px" label="Article No"
