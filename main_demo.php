@@ -58,7 +58,7 @@ include($_SERVER['DOCUMENT_ROOT'] . 'connect.php');
                     <th field="Stage" width="70" align="center">Stage</th>
                     <th field="IssuseComment" width="500" align="center">Inssus & Comments</th>
                     <th field="ResDept" width="150" align="center">Responsibilty Dept</th>
-                    <th field="Image" width="200" align="center">Picture</th>
+                    <th field="Image" width="200" align="center" formatter="formatLink">Picture</th>
                     <th field="UserID" width="85" align="center">User ID</th>
                     <th field="UserDate" width="200" align="center">User Date</th>
                 </tr>
@@ -99,7 +99,7 @@ include($_SERVER['DOCUMENT_ROOT'] . 'connect.php');
                         labelWidth="100px" required="true">
                 </div>
                 <div style="margin-bottom:10px">
-                    <input name="IssuseComment" id="IssuseComment1" class="easyui-textbox" labelPosition="top"
+                    <input name="IssuseComment" id="IssuseComment" class="easyui-textbox" labelPosition="top"
                         multiline="true" style="width:620px;height:120px" label="Issuse And Comment" labelWidth="200px">
 
                 </div>
@@ -132,6 +132,76 @@ include($_SERVER['DOCUMENT_ROOT'] . 'connect.php');
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
                 onclick="javascript:$('#dlg_1').dialog('close')" style="width:90px">Cancel</a>
         </div>
+        <!-- form edit center -->
+        <div id="dlg_ed_1" class="easyui-dialog" style="width:700px;top: 200px"
+            data-options="closed:true,modal:true,border:' thin',buttons:'#dlg_1-buttons'">
+            <form id="fm_ed_1" method="post" novalidate style="margin:0;padding:10px 20px">
+                <div style="margin-bottom:10px">
+                    <input name="ArtNo" id="ArtNo1" class="easyui-textbox" style="width: 300px" label="Article No"
+                        labelWidth="100px" required="true">
+                    <span style="margin-left:10px">
+                        <input name="ArtName" id="ArtName1" class="easyui-textbox" style="width:300px"
+                            label="Article Name" labelWidth="100px" required="true">
+                    </span>
+                </div>
+                <div style="margin-bottom:10px">
+                    <select name="Cat" id="Cat1" class="easyui-combobox" style="width: 300px" label="Catergory"
+                        labelWidth="100px" required="true"
+                        data-options="valueField: 'Category',textField: 'Category',url: 'data/data_main_demo/data_main_demo.php?Action=getCategory'">
+                    </select>
+                    <span style="margin-left:10px">
+                        <input name="Stage" id="Stage1" class="easyui-textbox" style="width:300px" label="Stage"
+                            labelWidth="100px" required="true">
+                    </span>
+                </div>
+                <div style="margin-bottom:10px">
+                    <span style="margin-right:10px">
+                        <select name="Pic" id="Pic1" class="easyui-combobox" panelHeight="auto" style="width:300px"
+                            label="Picture" labelWidth="100px" required="true">
+                            <option value=''></option>
+                            <option value='1'>Yes</option>
+                            <option value='0'>No</option>
+                        </select>
+                    </span>
+                    <input name="ResDept" id="ResDept1" class="easyui-textbox" style="width: 300px" label="FD"
+                        labelWidth="100px" required="true">
+                </div>
+                <div style="margin-bottom:10px">
+                    <input name="IssuseComment" id="IssuseComment1" class="easyui-textbox" labelPosition="top"
+                        multiline="true" style="width:620px;height:120px" label="Issuse And Comment" labelWidth="200px">
+
+                </div>
+                <div id="container-img_1" style="display: none; overflow-x: scroll;overflow-y: hidden;">
+                    <div style="display: flex;margin-bottom: 20px;gap: 40px;">
+                        <div class="Img">
+                            <div style="width: 300px; height: 200px; display: block; margin: 10px auto;">
+                                <img class="display-img_1" width="100%" height="100%" src="img/no-image.png" />
+                            </div>
+                            <div style="display: flex; justify-content: center;">
+                                <span>
+                                    <label for="upload_1" class="upload-label_1">
+                                        <span class="glyphicon glyphicon-picture"
+                                            style="font-size: 2.5rem; cursor: pointer; margin-right: 10px;">
+                                        </span>
+                                        <input type="file" class="uploads_1" id="upload_1" style="display: none" />
+
+                                        <input type="hidden" class="image_1" name="displayImg[]" />
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="dlg_1-buttons">
+            <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="save_Center()"
+                style="width:90px">Save</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
+                onclick="javascript:$('#dlg_1').dialog('close')" style="width:90px">Cancel</a>
+        </div>
+
+
     </div>
 </body>
 

@@ -34,10 +34,7 @@ if ($Action == 'showCenter') {
     $Cat = isset($_GET['Cat']) ? ($_GET['Cat']) : '';
     $Stage = isset($_GET['Stage']) ? ($_GET['Stage']) : '';
     $IssuseComment = isset($_GET['IssuseComment']) ? ($_GET['IssuseComment']) : '';
-    $Pic = isset($_GET['Pic']) ? ($_GET['Pic']) : '';
     $ResDept = isset($_GET['ResDept']) ? ($_GET['ResDept']) : '';
-    $Img = isset($_GET['displayImg']) ? $_GET['displayImg'] : '';
-
 
     $sqlDA = '';
     if ($ArtNo != '') {
@@ -47,19 +44,20 @@ if ($Action == 'showCenter') {
         $sqlDA .= "AND Category = '$Cat' ";
     }
     $qry_SearhTest = "SELECT ArticleNo ArtNo, ArticleName ArtName, Category Cat, Stage
-                            ,Issuse_Comment IssuseComment,Picture Pic, Res_Dept ResDept, UserID, UserDate,Images Image
+                            ,Issuse_Comment IssuseComment,Picture Pic, Res_Dept ResDept,Image, UserID, UserDate
                       FROM EIP_Test
-                      WHERE 1=1";
-    // echo $qry_SearhTest;
+                      WHERE 1=1" . $sqlDA . "";
+    //echo $qry_SearhTest;
     $rs = odbc_exec($conn_eip, $qry_SearhTest);
+
+    // echo $rs;
 
     $item = array();
     while (@$row = odbc_fetch_object($rs)) {
         array_push($item, $row);
     }
-
+    // print_r($item);
     $result["rows"] = $item;
-
     echo json_encode($result);
 }
 
@@ -90,15 +88,15 @@ if ($Action == 'addCenter') {
             }
         }
         $Images = implode(",", $Arry_Image);
-
         $sqlInsert = "INSERT INTO EIP_Test
                   (ArticleNo,ArticleName,Category,Stage,Issuse_Comment,
-	                Picture,Res_Dept,UserID,UserDate,Images)
+	                Picture,Res_Dept,UserID,UserDate,Image)
                 VALUES
                 (
                     '$ArtNo','$ArtName','$Cat','$Stage','$IssuseComment',
                     '$Pic','$ResDept','32729',GetDate(),'$Image'
                 )";
+        // echo $sqlInsert;
         $rs = odbc_exec($conn_eip, $sqlInsert);
         if (odbc_num_rows($rs) > 0) {
             echo json_encode(array('Info' => 'Thêm dữ liệu thành công!. '));
@@ -109,7 +107,7 @@ if ($Action == 'addCenter') {
         $Image = null;
         $sqlInsert = "INSERT INTO EIP_Test
                   (ArticleNo,ArticleName,Category,Stage,Issuse_Comment,
-	                Picture,Res_Dept,UserID,UserDate,Images)
+	                Picture,Res_Dept,UserID,UserDate,Image)
                 VALUES
                 (
                     '$ArtNo','$ArtName','$Cat','$Stage','$IssuseComment',
