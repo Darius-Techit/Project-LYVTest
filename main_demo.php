@@ -44,7 +44,7 @@ include($_SERVER['DOCUMENT_ROOT'] . 'connect.php');
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true"
                 onclick="add_Center()">New</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
-                onclick="editUser()">Edit</a>
+                onclick="edit_Center()()">Edit</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true"
                 onclick="del_Center()">Remove</a>
         </div>

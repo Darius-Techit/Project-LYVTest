@@ -106,6 +106,68 @@ function save_Center() {
         },
     });
 }
+
+function edit_Center() {
+    var row = $("#dg_1").datagrid("getSelected");
+    if (row) {
+        $("#dlg_ed_1").dialog('open').dialog("setTitle", "Edit");
+        $("#fm_ed_1").form("load", row);
+        let images = row.Image.split(',');
+        let displayImage = $(".display-img_1");
+        for (let i = 0; i < displayImage.length; i++) {
+            if (images[i] === undefined) {
+                $($(".display-img_1")[i]).attr('src', "img/no-image.png");
+            } else {
+                if (row.Pic == 0) {
+                    $($(".display-img_1")[i]).attr('src', "img/no-image.png");
+                } else {
+                    $($(".display-img_1")[i]).attr('src', 'data/data_main_demo/img/' + images[i]);
+                }
+            }
+        }
+        url =
+            "data/data_main_demo/data_main_demo.php?Action=editCenter&ArtNo=" +
+            row.ArtNo +
+            "&ArtName=" +
+            row.ArtName +
+            "&Cat=" +
+            row.Cat +
+            "&Stage=" +
+            row.Stage +
+            "&IssuseComment=" +
+            row.IssuseComment +
+            "&Pic=" +
+            row.Pic +
+            "&ResDept=" +
+            row.ResDept +
+            "&Image=" +
+            row.Image;
+
+    }
+}
+function save_Center_ed() {
+    $("#fm_ed_1").form("submit", {
+        url: url,
+        onSubmit: function () {
+            return $(this).form("validate");
+        },
+        success: function (res) {
+            var res = eval("(" + res + ")");
+            if (res.Info) {
+                $.messager.show({
+                    title: "Info",
+                    msg: res.Info,
+                });
+                $("#dlg_ed_1").dialog("close");
+                $("#dg_1").datagrid("reload");
+            } else {
+                $("#dlg_ed_1").dialog("close");
+                $("#dg_1").datagrid("reload");
+            }
+        }
+    });
+}
+
 function del_Center() {
     var row = $("#dg_1").datagrid("getSelected");
     if (row) {

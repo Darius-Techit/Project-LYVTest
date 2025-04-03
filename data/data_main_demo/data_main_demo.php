@@ -125,6 +125,88 @@ if ($Action == 'addCenter') {
 }
 
 if ($Action == 'editCenter') {
+    $ArtNo = isset($_REQUEST['ArtNo']) ? ($_REQUEST['ArtNo']) : '';
+    $ArtName = isset($_REQUEST['ArtName']) ? ($_REQUEST['ArtName']) : '';
+    $Cat = isset($_REQUEST['Cat']) ? ($_REQUEST['Cat']) : '';
+    $Stage = isset($_REQUEST['Stage']) ? ($_REQUEST['Stage']) : '';
+    $IssuseComment = isset($_REQUEST['IssuseComment']) ? ($_REQUEST['IssuseComment']) : '';
+    $Pic = isset($_REQUEST['Pic']) ? ($_REQUEST['Pic']) : '';
+    $ResDept = isset($_REQUEST['ResDept']) ? ($_REQUEST['ResDept']) : '';
+    $Img = isset($_POST['displayImg']) ? $_POST['displayImg_1'] : '';
+
+    $Data_Images = $_REQUEST['Image'];
+    $Arr_Data_Images = explode(",", $Data_Images);
+    $Arry_Image = array();
+    if ($Pic == '0') {
+        for ($i = 0; $i < count($Arr_Data_Images); $i++) {
+            if ($Arr_Data_Images[$i] != '') {
+                $createDeletePath = "img/" . $Arr_Data_Images[$i];
+                unlink($createDeletePath);
+            }
+        }
+        $Image = NULL;
+        $sqlUpdate = " UPDATE EIP_Test
+                       SET
+                        ArticleName = '$ArtName' ,
+                        Category = '$Cat',
+                        Stage = '$Stage',
+                        Issuse_Comment = '$IssuseComment' ,
+                        Picture = '$Pic',
+                        Res_Dept = '$ResDept',
+                        UserID = '32729',
+                        UserDate = GetDate(),
+                        Image = '$Image' 
+                       WHERE ArticleNo = '$ArtNo' ";
+
+        $rs = odbc_exec($conn_eip, $sqlUpdate);
+        if (odbc_num_rows($rs) > 0) {
+            echo json_encode(array('Info' => 'Edit Success!.'));
+        } else {
+            echo json_encode(array('Info' => 'Error!.'));
+        }
+    } else {
+        for ($i = 0; $i < count($Img); $i++) {
+            if ($Img[$i] != '') {
+                if (isset($Arr_Data_Images[$i]) != '') {
+                    $createDeletePath = "img/" . $Arr_Data_Images[$i];
+                    @unlink($createDeletePath);
+                }
+                $ImgName = rand(100, 10000);
+                $Image = str_replace('-', '', $ArtNo) . "_" . $ImgName . ".png";
+                array_push($Arry_Image, $Image);
+                $path = "img/" . str_replace('-', '', $ArtNo) . "_" . $ImgName . ".png";
+                $image_parts = explode(";base64,", $Img[$i]);
+                $image_type_aux = explode("image/", $image_parts[0]);
+                $image_type = $image_type_aux[1];
+                $image_base64 = base64_decode($image_parts[1]);
+                $file = $path;
+                file_put_contents($file, $image_base64);
+            } else {
+                if (isset($Arr_Data_Images[$i]) != '') {
+                    array_push($Arry_Image, $Arr_Data_Images[$i]);
+                }
+            }
+        }
+        $Images = implode(",", $Arry_Image);
+        $sqlUpdate = " UPDATE EIP_Test
+                       SET
+                        ArticleName = '$ArtName' ,
+                        Category = '$Cat',
+                        Stage = '$Stage',
+                        Issuse_Comment = '$IssuseComment' ,
+                        Picture = '$Pic',
+                        Res_Dept = '$ResDept',
+                        UserID = '32729',
+                        UserDate = GetDate(),
+                        Image = '$Image' 
+                       WHERE ArticleNo = '$ArtNo' ";
+        $rs = odbc_exec($conn_eip, $sqlUpdate);
+        if (odbc_num_rows($rs) > 0) {
+            echo json_encode(array('Info' => 'Edit Success!.'));
+        } else {
+            echo json_encode(array('Info' => 'Error!.'));
+        }
+    }
 }
 
 if ($Action == 'deleteCenter') {
