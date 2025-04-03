@@ -12,10 +12,10 @@ $(document).ready(function () {
     $("#Pic1").combobox({
         onChange: function (newValue) {
             if (newValue == '1') {
-                $("#container-img").css('display', 'block');
+                $("#container-img_1").css('display', 'block');
             }
             if (newValue == '0' || newValue == '') {
-                $('#container-img').css('display', 'none');
+                $('#container-img_1').css('display', 'none');
             }
         }
     });
@@ -121,7 +121,7 @@ function edit_Center() {
                 if (row.Pic == 0) {
                     $($(".display-img_1")[i]).attr('src', "img/no-image.png");
                 } else {
-                    $($(".display-img_1")[i]).attr('src', 'data/data_main_demo/img/' + images[i]);
+                    $($(".display-img_1")[i]).attr('src', './data/data_main_demo/img/' + images[i]);
                 }
             }
         }
@@ -152,7 +152,7 @@ function save_Center_ed() {
             return $(this).form("validate");
         },
         success: function (res) {
-            var res = eval("(" + res + ")");
+            var res = JSON.parse(res); //eval("(" + res + ")")
             if (res.Info) {
                 $.messager.show({
                     title: "Info",

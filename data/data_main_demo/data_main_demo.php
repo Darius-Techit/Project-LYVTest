@@ -132,7 +132,7 @@ if ($Action == 'editCenter') {
     $IssuseComment = isset($_REQUEST['IssuseComment']) ? ($_REQUEST['IssuseComment']) : '';
     $Pic = isset($_REQUEST['Pic']) ? ($_REQUEST['Pic']) : '';
     $ResDept = isset($_REQUEST['ResDept']) ? ($_REQUEST['ResDept']) : '';
-    $Img = isset($_POST['displayImg']) ? $_POST['displayImg_1'] : '';
+    $Img = isset($_POST['displayImg_1']) ? $_POST['displayImg_1'] : '';
 
     $Data_Images = $_REQUEST['Image'];
     $Arr_Data_Images = explode(",", $Data_Images);
@@ -155,7 +155,7 @@ if ($Action == 'editCenter') {
                         Res_Dept = '$ResDept',
                         UserID = '32729',
                         UserDate = GetDate(),
-                        Image = '$Image' 
+                        Image = '$Image'
                        WHERE ArticleNo = '$ArtNo' ";
 
         $rs = odbc_exec($conn_eip, $sqlUpdate);
@@ -187,7 +187,7 @@ if ($Action == 'editCenter') {
                 }
             }
         }
-        $Images = implode(",", $Arry_Image);
+        $Image = implode(",", $Arry_Image);
         $sqlUpdate = " UPDATE EIP_Test
                        SET
                         ArticleName = '$ArtName' ,
@@ -200,6 +200,7 @@ if ($Action == 'editCenter') {
                         UserDate = GetDate(),
                         Image = '$Image' 
                        WHERE ArticleNo = '$ArtNo' ";
+        //echo $sqlUpdate;
         $rs = odbc_exec($conn_eip, $sqlUpdate);
         if (odbc_num_rows($rs) > 0) {
             echo json_encode(array('Info' => 'Edit Success!.'));

@@ -185,7 +185,7 @@ include($_SERVER['DOCUMENT_ROOT'] . 'connect.php');
                                         </span>
                                         <input type="file" class="uploads_1" id="upload_1" style="display: none" />
 
-                                        <input type="hidden" class="image_1" name="displayImg[]" />
+                                        <input type="hidden" class="image_1" name="displayImg_1[]" />
                                     </label>
                                 </span>
                             </div>
@@ -195,10 +195,10 @@ include($_SERVER['DOCUMENT_ROOT'] . 'connect.php');
             </form>
         </div>
         <div id="dlg_1-buttons">
-            <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="save_Center()"
+            <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="save_Center_ed()"
                 style="width:90px">Save</a>
             <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
-                onclick="javascript:$('#dlg_1').dialog('close')" style="width:90px">Cancel</a>
+                onclick="javascript:$('#dlg_ed_1').dialog('close')" style="width:90px">Cancel</a>
         </div>
 
 
